@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import ButtonLogin from './ButtonLogin'
 import ButtonLogout from './ButtonLogout'
-import swAlert from '@sweetalert/with-react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Button } from 'react-bootstrap'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import '../css/App.css'
-
+const MySwal = withReactContent(Swal)
 function NavBar() {
   const { isAuthenticated } = useAuth0()
   const navigate = useNavigate()
@@ -21,9 +22,9 @@ function NavBar() {
   const handleSearch = async (e) => {
     e.preventDefault()
     if (!isAuthenticated) {
-      return swAlert(<h6>Debes estar logueado</h6>)
+      return MySwal.fire(<h6>Debes estar logueado</h6>)
     } else if (searchTerm.trim().length === 0) {
-      return swAlert(<h6>Debes introducir una palabra clave</h6>)
+      return MySwal.fire(<h6>Debes introducir una palabra clave</h6>)
     } else {
       navigate(`/Search?palabra=${searchTerm}`)
       setSearchTerm('')

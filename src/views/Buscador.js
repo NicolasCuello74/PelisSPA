@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react'
 import CustomCard from '../components/CustomCard'
 import axios from 'axios'
-import swAlert from '@sweetalert/with-react'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import Pagination from '../components/Pagination'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
 const { REACT_APP_KEY } = process.env
-
+const MySwal = withReactContent(Swal)
 const Buscador = () => {
   const [searchResults, setSearchResults] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
@@ -24,7 +25,7 @@ const Buscador = () => {
         setSearchResults(response.data.results)
         setTotalPages(response.data.total_pages)
       } catch (error) {
-        swAlert(<h2>Hubo errores intenta más tarde</h2>)
+        MySwal.fire(<h2>Hubo errores intenta más tarde</h2>)
       }
     }
     endpoint()
@@ -70,9 +71,7 @@ const Buscador = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
-  console.log(setCurrentPage)
-  console.log(setTotalPages)
-  console.log(setSearchResults)
+
   return (
     <div className="container">
       <div className="row">
