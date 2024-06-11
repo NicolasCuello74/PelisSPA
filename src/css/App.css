@@ -41,3 +41,28 @@
 .animation-circle:nth-child(2) {
   animation-delay: -0.16s;
 }
+
+.custom-modal-background .modal-content {
+  background-color: #363636; /* Cambia esto al color deseado */
+  color: #cacaca; /* Opcional: Cambia el color del texto */
+}
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: '';
+  background: no-repeat center center;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 8, 8, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.collapse.show {
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .collapse {
+    display: none;
+  }
+}

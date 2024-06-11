@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 import AboutMe from './views/AboutMe'
 import Landing from './views/Landing'
 import Favorites from './views/Favorites'
-import Detalle from './views/Detalle'
+import GenreFilterPage from './views/GenreFilterPage'
 import Buscador from './views/Buscador'
 import './css/bootstrap.min.css'
 import './css/App.css'
@@ -22,7 +22,12 @@ function App() {
             path="/home"
             element={<HomePage addOrRemoveFromFavs={addOrRemoveFromFavs} />}
           />
-          <Route path="/Detail/:id" element={<Detalle />} />
+          <Route
+            path="/genre/:genreId"
+            element={
+              <GenreFilterPage addOrRemoveFromFavs={addOrRemoveFromFavs} />
+            }
+          />
           <Route
             path="/Favoritos"
             element={<Favorites addOrRemoveFromFavs={addOrRemoveFromFavs} />}

@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 
 function Footer() {
+  const currentYear = new Date().getFullYear()
   return (
     <footer className="container p-1 mb-0 text-info-emphasis">
       <nav className="bg-body-tertiary">
@@ -54,7 +55,9 @@ function Footer() {
           </li>
         </ul>
       </nav>
-      <p className="text-center">Copyright Alkemy Challenge</p>
+      <p className="text-center">
+        © {currentYear} Nicolás Cuello. Todos los derechos reservados.
+      </p>
     </footer>
   )
 }

@@ -1,55 +1,62 @@
-import axios from 'axios'
-import CustomCard from '../components/CustomCard'
+import React, { useEffect, useState } from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import swAlert from '@sweetalert/with-react'
+import CustomCard from '../components/CustomCard'
 import Pagination from '../components/Pagination'
-const { REACT_APP_URL, REACT_APP_KEY } = process.env
+import fetchMovies from '../utils/fetchMovies'
+import fetchGenres from '../utils/fetchGenres'
+import Genres from '../components/Genres'
+import getFavoritesLocalStorage from '../utils/getFavoritesLocalStorage'
+import addOrRemoveFromFavs from '../utils/addOrRemoveFromFavs'
 
-const HomePage = ({ addOrRemoveFromFavs }) => {
-  //Aqui haremos una página de bienvenida con el listado de las primeras 20 peliculas
+const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [apiData, setApiData] = useState([])
+  const [genres, setGenres] = useState([])
+  const [favorites, setFavorites] = useState([])
   const { isAuthenticated } = useAuth0()
   const navigate = useNavigate()
 
   useEffect(() => {
-    const endpoint = async () => {
-      if (!isAuthenticated) {
-        return navigate(`/`)
-      }
-      try {
-        const response = await axios.get(
-          `${REACT_APP_URL}?api_key=${REACT_APP_KEY}&${currentPage}`,
-          {
-            params: {
-              page: currentPage,
-            },
-          }
-        )
-        setApiData(response.data.results)
-        setTotalPages(response.data.total_pages)
-      } catch (error) {
-        swAlert(<h2>Hubo errores intenta más tarde</h2>)
-      }
-    }
-    endpoint()
-  }, [currentPage, navigate, isAuthenticated])
+    fetchGenres(isAuthenticated, navigate, setGenres)
+    fetchMovies(
+      currentPage,
+      setApiData,
+      setTotalPages,
+      isAuthenticated,
+      navigate
+    )
+
+    const favs = getFavoritesLocalStorage()
+    setFavorites(favs)
+  }, [currentPage, isAuthenticated, navigate])
 
   const handleClicks = (movie) => {
     const updatedFavorites = addOrRemoveFromFavs(movie)
+    setFavorites(updatedFavorites)
   }
 
   const handlePageChange = (page) => {
     setCurrentPage(page)
   }
+
+  const handleGenreClick = async (genreId) => {
+    console.log('Genre clicked:', genreId)
+    navigate(`/genre/${genreId}`)
+  }
+
   return (
-    <>
+    <div className="container">
+      <div className="d-flex justify-content-center align-content-center align-items-center mb-3">
+        <Genres genres={genres} onGenreClick={handleGenreClick} />
+      </div>
       <div className="row">
         {apiData.map((oneMovie, idx) => (
-          <div className="col-3 p-3 h-auto mt-2 d-flex" key={idx}>
+          <div
+            className="col-12 col-sm-6 col-md-4 col-lg-3 p-3 h-auto mt-2 d-flex"
+            key={idx}
+          >
             <CustomCard
               addOrRemoveFromFavs={handleClicks}
               card={{
@@ -66,17 +73,20 @@ const HomePage = ({ addOrRemoveFromFavs }) => {
                   </p>
                 ),
                 id: oneMovie.id,
+                isFavorite: favorites.some((fav) => fav.id === oneMovie.id),
               }}
             />
           </div>
         ))}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+        <div className="d-flex justify-content-center mt-3">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 

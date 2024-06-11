@@ -9,7 +9,7 @@ const NoFavorites = () => {
         <div className="animation-circle"></div>
         <div className="animation-circle"></div>
       </div>
-      <h2>No hay favoritos para visualizar</h2>
+      <h2>There are no favorites to display</h2>
     </div>
   )
 }

@@ -1,13 +1,16 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import React from 'react'
+import { Button } from 'react-bootstrap'
 
 const LogoutButton = () => {
   const { logout } = useAuth0()
 
   return (
-    <button
-      className="btn btn-primary border-dark m-2"
+    <Button
+      variant="secondary"
+      size="sm"
       type="submit"
+      style={{ marginRight: '2em' }}
       onClick={() =>
         logout({
           logoutParams: {
@@ -17,7 +20,7 @@ const LogoutButton = () => {
       }
     >
       Log Out
-    </button>
+    </Button>
   )
 }
 

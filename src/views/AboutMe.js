@@ -11,7 +11,7 @@ function AboutMe() {
       <div className="row justify-content-center">
         <div className="col-lg-6 col-md-8 col-sm-10 text-center">
           <img
-            src="https://res.cloudinary.com/decdqjawu/image/upload/t_Profile/v1714881257/IMG_20231006_221052960_ang1ce.png"
+            src="https://res.cloudinary.com/decdqjawu/image/upload/t_Profile/v1718062434/perfil2_wx58y3.png"
             alt="Foto de perfil"
           />
           <h3>Developer Full Stack</h3>
