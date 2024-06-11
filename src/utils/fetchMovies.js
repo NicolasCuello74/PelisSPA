@@ -16,7 +16,7 @@ const fetchMovies = async (
   }
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_URL}?api_key=${process.env.REACT_APP_KEY}&page=${page}`
+      `${process.env.URL}?api_key=${process.env.KEY}&page=${page}`
     )
     setApiData(response.data.results)
     setTotalPages(response.data.total_pages)

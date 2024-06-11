@@ -6,7 +6,7 @@ import withReactContent from 'sweetalert2-react-content'
 import Pagination from '../components/Pagination'
 import { useLocation } from 'react-router-dom'
 import { useState } from 'react'
-const { REACT_APP_KEY } = process.env
+const { KEY } = process.env
 const MySwal = withReactContent(Swal)
 const Buscador = () => {
   const [searchResults, setSearchResults] = useState([])
@@ -20,7 +20,7 @@ const Buscador = () => {
     const endpoint = async () => {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_KEY}&query=${palabra}&page=${currentPage}`
+          `https://api.themoviedb.org/3/search/movie?api_key=${KEY}&query=${palabra}&page=${currentPage}`
         )
         setSearchResults(response.data.results)
         setTotalPages(response.data.total_pages)
