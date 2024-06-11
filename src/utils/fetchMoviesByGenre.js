@@ -8,7 +8,7 @@ const fetchMoviesByGenre = async (
   genreId
 ) => {
   try {
-    const url = `${process.env.REACT_APP_URL}?api_key=${process.env.REACT_APP_KEY}&with_genres=${genreId}&page=${page}`
+    const url = `${process.env.URL}?api_key=${process.env.KEY}&with_genres=${genreId}&page=${page}`
 
     const response = await axios.get(url)
     setGenreMovies(response.data.results)

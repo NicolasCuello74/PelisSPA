@@ -20,7 +20,7 @@ const GenreFilterPage = ({ addOrRemoveFromFavs }) => {
 
   const fetchMovies = async () => {
     try {
-      const url = `${process.env.REACT_APP_URL}?api_key=${process.env.REACT_APP_KEY}&with_genres=${selectedGenre}&page=${currentPage}`
+      const url = `${process.env.URL}?api_key=${process.env.KEY}&with_genres=${selectedGenre}&page=${currentPage}`
 
       const response = await axios.get(url)
       setGenreMovies(response.data.results)
