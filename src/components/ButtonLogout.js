@@ -14,7 +14,8 @@ const LogoutButton = () => {
       onClick={() =>
         logout({
           logoutParams: {
-            returnTo: window.location.origin + process.env.PUBLIC_URL + '/',
+            returnTo:
+              window.location.origin + process.env.REACT_APP_URL_VERCEL + '/',
           },
         })
       }

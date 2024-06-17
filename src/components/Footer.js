@@ -16,10 +16,16 @@ function Footer() {
           <li className="m-3 fs-3">
             <a
               className="nav-link"
-              href="https://www.instagram.com/nicocuello74/"
+              href="https://www.instagram.com/nicocuello.7/"
               rel="noopener noreferrer"
+              style={{ color: '#e1051b' }}
             >
-              <FontAwesomeIcon icon={faInstagramSquare} bounce /> Instagram
+              <FontAwesomeIcon
+                icon={faInstagramSquare}
+                bounce
+                style={{ color: '#e1051b' }}
+              />{' '}
+              Instagram
             </a>
           </li>
           <li className="m-3 fs-3">
@@ -27,8 +33,13 @@ function Footer() {
               className="nav-link"
               href="https://github.com/NicolasCuello74"
               rel="noopener noreferrer"
+              style={{ color: '#e1051b' }}
             >
-              <FontAwesomeIcon icon={faSquareGithub} bounce />
+              <FontAwesomeIcon
+                icon={faSquareGithub}
+                bounce
+                style={{ color: '#e1051b' }}
+              />
               GitHub
             </a>
           </li>
@@ -37,8 +48,13 @@ function Footer() {
               className="nav-link"
               href="https://wa.me/543516575438"
               rel="noopener noreferrer"
+              style={{ color: '#e1051b' }}
             >
-              <FontAwesomeIcon icon={faSquareWhatsapp} bounce />
+              <FontAwesomeIcon
+                icon={faSquareWhatsapp}
+                bounce
+                style={{ color: '#e1051b' }}
+              />
               Whatsapp
             </a>
           </li>
@@ -48,14 +64,19 @@ function Footer() {
               className="nav-link"
               href="https://www.linkedin.com/in/nicolascuello/"
               rel="noopener noreferrer"
+              style={{ color: '#e1051b' }}
             >
-              <FontAwesomeIcon icon={faLinkedin} bounce />
+              <FontAwesomeIcon
+                icon={faLinkedin}
+                bounce
+                style={{ color: '#e1051b' }}
+              />
               Linkedin
             </a>
           </li>
         </ul>
       </nav>
-      <p className="text-center">
+      <p className="text-center" style={{ color: '#e1051b' }}>
         © {currentYear} Nicolás Cuello. Todos los derechos reservados.
       </p>
     </footer>
