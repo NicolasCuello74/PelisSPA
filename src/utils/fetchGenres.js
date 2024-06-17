@@ -10,7 +10,7 @@ const fetchGenres = async (isAuthenticated, navigate, setGenres) => {
   }
   try {
     const response = await axios.get(
-      `${process.env.URL_GENRE}?api_key=${process.env.KEY}`
+      `${process.env.REACT_APP_URL_GENRE}?api_key=${process.env.REACT_APP_KEY}`
     )
     setGenres(response.data.genres)
   } catch (error) {
