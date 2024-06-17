@@ -15,7 +15,7 @@ const LogoutButton = () => {
         logout({
           logoutParams: {
             returnTo:
-              window.location.origin + process.env.REACT_APP_URL_VERCEL + '/',
+              'https://movie-a6hnv8yo6-nicolas-cuellos-projects.vercel.app/',
           },
         })
       }
