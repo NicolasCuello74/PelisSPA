@@ -14,8 +14,7 @@ const LogoutButton = () => {
       onClick={() =>
         logout({
           logoutParams: {
-            returnTo:
-              'https://movie-a4gtdgnwv-nicolas-cuellos-projects.vercel.app/',
+            returnTo: 'https://alkemy-app.vercel.app/',
           },
         })
       }
