@@ -72,7 +72,11 @@ const CustomCard = (props) => {
             {props.card.description}
           </Card.Text>
           <div className="d-flex flex-row justify-content-around border-0 m-0 p-2">
-            <Button variant="outline-dark" onClick={handleVideoOpen}>
+            <Button
+              className=""
+              variant="outline-dark"
+              onClick={handleVideoOpen}
+            >
               Trailer
             </Button>
           </div>

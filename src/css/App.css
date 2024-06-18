@@ -43,8 +43,8 @@
 }
 
 .custom-modal-background .modal-content {
-  background-color: #363636; /* Cambia esto al color deseado */
-  color: #cacaca; /* Opcional: Cambia el color del texto */
+  background-color: #363636;
+  color: #cacaca;
 }
 .navbar-toggler-icon {
   display: inline-block;
