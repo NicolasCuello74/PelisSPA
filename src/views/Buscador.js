@@ -76,7 +76,10 @@ const Buscador = () => {
     <div className="container">
       <div className="row">
         {searchResults.map((movie, index) => (
-          <div className="col-3 p-3 h-auto mt-2 d-flex" key={index}>
+          <div
+            className="col-12 col-sm-6 col-md-4 col-lg-3 p-3 h-auto mt-2 d-flex"
+            key={index}
+          >
             <CustomCard
               addOrRemoveFromFavs={addOrRemoveFromFavs}
               card={{

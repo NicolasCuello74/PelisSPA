@@ -66,3 +66,39 @@
     display: none;
   }
 }
+
+.custom-modal .modal-dialog {
+  max-width: 100%;
+  margin: 1rem;
+}
+
+.custom-modal .modal-content {
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 576px) {
+  .custom-modal .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .custom-modal .modal-dialog {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 992px) {
+  .custom-modal .modal-dialog {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .custom-modal .modal-dialog {
+    max-width: 1100px;
+  }
+}
