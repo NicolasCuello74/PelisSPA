@@ -87,16 +87,21 @@ const CustomCard = (props) => {
         onHide={handleVideoClose}
         className="d-flex justify-content-center align-content-center align-items-center"
         centered
-        size="lg"
-        variant="primary"
-        dialogClassName="custom-modal-background"
+        dialogClassName="custom-modal"
       >
         <Modal.Header closeButton>
           <Modal.Title>Trailer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {videoKey ? (
-            <YoutubePlayer url={videoUrl} controls={true} />
+            <div className="video-container">
+              <YoutubePlayer
+                url={videoUrl}
+                controls={true}
+                width="100%"
+                height="100%"
+              />
+            </div>
           ) : (
             <p>No trailer available</p>
           )}
