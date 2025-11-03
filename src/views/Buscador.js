@@ -29,7 +29,7 @@ const Buscador = () => {
       }
     }
     endpoint()
-  }, [location.search, currentPage])
+  }, [location.search, currentPage, palabra])
   const favMovies = localStorage.getItem('fav')
   let tempMovieInFavs
 
@@ -73,7 +73,7 @@ const Buscador = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container pt-5">
       <div className="row">
         {searchResults.map((movie, index) => (
           <div
@@ -100,11 +100,13 @@ const Buscador = () => {
             />
           </div>
         ))}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+        <div className="d-flex justify-content-center mt-3">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
     </div>
   )

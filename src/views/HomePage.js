@@ -4,22 +4,23 @@ import { useNavigate } from 'react-router-dom'
 import CustomCard from '../components/CustomCard'
 import Pagination from '../components/Pagination'
 import fetchMovies from '../utils/fetchMovies'
-import fetchGenres from '../utils/fetchGenres'
-import Genres from '../components/Genres'
+// import fetchGenres from '../utils/fetchGenres'
+// import Genres from '../components/Genres'
 import getFavoritesLocalStorage from '../utils/getFavoritesLocalStorage'
 import addOrRemoveFromFavs from '../utils/addOrRemoveFromFavs'
+import '../css/App.css'
 
 const HomePage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [apiData, setApiData] = useState([])
-  const [genres, setGenres] = useState([])
+  // const [genres, setGenres] = useState([])
   const [favorites, setFavorites] = useState([])
   const { isAuthenticated } = useAuth0()
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetchGenres(isAuthenticated, navigate, setGenres)
+    // fetchGenres(isAuthenticated, navigate)
     fetchMovies(
       currentPage,
       setApiData,
@@ -41,16 +42,14 @@ const HomePage = () => {
     setCurrentPage(page)
   }
 
-  const handleGenreClick = async (genreId) => {
-    console.log('Genre clicked:', genreId)
-    navigate(`/genre/${genreId}`)
-  }
+  // const handleGenreClick = async (genreId) => {
+  //   console.log('Genre clicked:', genreId)
+  //   navigate(`/genre/${genreId}`)
+  // }
 
   return (
-    <div className="container">
-      <div className="d-flex justify-content-center align-content-center align-items-center mb-3">
-        <Genres genres={genres} onGenreClick={handleGenreClick} />
-      </div>
+    <div className="CustomCard container">
+      {/* <Genres genres={genres} onGenreClick={handleGenreClick} /> */}
       <div className="row">
         {apiData.map((oneMovie, idx) => (
           <div

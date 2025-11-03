@@ -52,40 +52,33 @@ const CustomCard = (props) => {
           height: '29rem',
         }}
       >
-        <Button
-          className="d-flex justify-content-center align-items-center position-absolute bg-light"
-          style={{ width: '30px', height: '30px' }}
-          onClick={handleClick}
-          data-movie-id={props.card.id}
-        >
-          {fav ? '💜' : '🤍'}
-        </Button>
         <Card.Img variant="top" className="img-fluid" src={props.card.image} />
         <Card.Body className="d-flex flex-column justify-content-around border-0 p-2">
           <Card.Title>{props.card.title}</Card.Title>
-          <Card.Text
-            style={{
-              width: 'auto',
-              height: '80px',
-            }}
-          >
-            {props.card.description}
-          </Card.Text>
-          <div className="d-flex flex-row justify-content-around border-0 m-0 p-2">
-            <Button
-              className=""
-              variant="outline-dark"
-              onClick={handleVideoOpen}
-            >
-              Trailer
-            </Button>
-          </div>
+          <Card.Text>{props.card.description}</Card.Text>
         </Card.Body>
+        <Card.Footer className="d-flex justify-content-between gap-1">
+          <Button
+            className="d-flex justify-content-center align-items-center bg-black"
+            style={{ width: 'auto', height: 'auto' }}
+            onClick={handleClick}
+            data-movie-id={props.card.id}
+          >
+            {fav ? '💜' : '🤍'}
+          </Button>
+          <Button
+            style={{ width: '80%' }}
+            variant="outline-dark"
+            onClick={handleVideoOpen}
+          >
+            Trailer
+          </Button>
+        </Card.Footer>
       </Card>
       <Modal
+        size="lg"
         show={showModal}
         onHide={handleVideoClose}
-        className="d-flex justify-content-center align-content-center align-items-center"
         centered
         dialogClassName="custom-modal"
       >
@@ -94,7 +87,7 @@ const CustomCard = (props) => {
         </Modal.Header>
         <Modal.Body>
           {videoKey ? (
-            <div className="video-container">
+            <div className="video-container" style={{ height: '50vh' }}>
               <YoutubePlayer
                 url={videoUrl}
                 controls={true}
@@ -103,7 +96,9 @@ const CustomCard = (props) => {
               />
             </div>
           ) : (
-            <p>No trailer available</p>
+            <Modal.Body style={{ height: '30vh' }}>
+              <h2>No trailer available</h2>
+            </Modal.Body>
           )}
         </Modal.Body>
       </Modal>

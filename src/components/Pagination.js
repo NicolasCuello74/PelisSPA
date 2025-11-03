@@ -18,34 +18,54 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <div className="d-flex align-items-center justify-content-center p-2">
-      <button className="m-2" onClick={handlePrev} disabled={currentPage === 1}>
-        Prev
-      </button>
-
-      {currentPage > 1 && (
-        <button onClick={() => handlePageClick(currentPage - 1)}>
-          {currentPage - 1}
+    <div
+      className="btn-toolbar"
+      role="toolbar"
+      aria-label="Toolbar with button groups"
+    >
+      <div className="btn-group" role="group" aria-label="Pagination">
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={handlePrev}
+          disabled={currentPage === 1}
+        >
+          Prev
         </button>
-      )}
 
-      <button className="m-2" disabled>
-        {currentPage}
-      </button>
+        {currentPage > 1 && (
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => handlePageClick(currentPage - 1)}
+          >
+            {currentPage - 1}
+          </button>
+        )}
 
-      {currentPage < totalPages && (
-        <button onClick={() => handlePageClick(currentPage + 1)}>
-          {currentPage + 1}
+        <button type="button" className="btn btn-secondary" disabled>
+          {currentPage}
         </button>
-      )}
 
-      <button
-        className="m-2"
-        onClick={handleNext}
-        disabled={currentPage === totalPages}
-      >
-        Next
-      </button>
+        {currentPage < totalPages && (
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => handlePageClick(currentPage + 1)}
+          >
+            {currentPage + 1}
+          </button>
+        )}
+
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={handleNext}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
+      </div>
     </div>
   )
 }

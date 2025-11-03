@@ -2,46 +2,43 @@ import React from 'react'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import '../css/Landing.css'
+import ButtonLogin from '../components/ButtonLogin'
+import ButtonRegister from '../components/ButtonRegister'
+import '../css/App.css'
 
 function Landing() {
-  const { isAuthenticated, loginWithRedirect } = useAuth0()
+  const { isAuthenticated } = useAuth0()
   const navigate = useNavigate()
+
   return isAuthenticated ? (
     navigate('/home')
   ) : (
-    <div className="landing-page">
-      <div className="background-video">
-        <video autoPlay loop muted>
-          <source src="path-to-your-video.mp4" type="video/mp4" />
-        </video>
+    <div id="landing-page" className="d-flex pt-5 bg-opacity-25 bg-black">
+      <div className="container w-50 d-flex flex-column justify-content-center align-items-center text-center">
+        <div className="d-flex">
+          <motion.h1
+            className="text-light mb-4"
+            initial={{ opacity: 0, y: -150 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 3 }}
+          >
+            Tu Portal de Películas Favoritas
+          </motion.h1>
+        </div>
+        <div className="d-flex align-items-center gap-4">
+          <div className="d-flex gap-4 align-content-center flex-column">
+            <ButtonLogin />
+            <p className="text-light">Ó</p>
+            <ButtonRegister />
+          </div>
+        </div>
       </div>
-      <div className="overlay"></div>
-      <div className="container h-100 d-flex flex-column justify-content-center align-items-center text-center">
-        <motion.h1
-          className="text-light mb-4"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Bienvenidos a
-        </motion.h1>
-        <motion.h2
-          className="text-light mb-4"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          Tu Portal de Películas Favoritas
-        </motion.h2>
-        <motion.button
-          className="btn btn-dark"
-          onClick={() => loginWithRedirect()}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          Loguearse
-        </motion.button>
+      <div className="landing-page w-50 opacity-75">
+        <img
+          src="https://res.cloudinary.com/decdqjawu/image/upload/v1751337027/ChatGPT_Image_30_jun_2025_11_27_05_p.m._xew21i.png"
+          alt="Landing"
+          className="img-fluid h-100 "
+        />
       </div>
     </div>
   )

@@ -1,3 +1,46 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: auto;
+  box-sizing: border-box;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.footer {
+  height: 150px;
+  width: 100dvw;
+}
+
+.landing-page {
+  height: auto;
+  background-image: url('https://res.cloudinary.com/decdqjawu/image/upload/v1751337027/ChatGPT_Image_30_jun_2025_11_27_05_p.m._xew21i.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.navbar-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Esto fuerza que se alinee a la izquierda */
+}
+
+.navbar-logo {
+  height: 40px; /* Ajusta según el alto que quieras */
+  width: auto;
+  border: black solid 1px; /* B
+  margin-right: 1rem; /* Espacio entre el logo y el resto */
+  justify-content: flex-start;
+}
+
+.CustomCard {
+  padding-top: 5.25rem;
+}
+
 .no-favorites-container {
   text-align: center;
   display: flex;
@@ -57,17 +100,7 @@
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%288, 8, 8, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
-.collapse.show {
-  display: block;
-}
-
-@media (max-width: 992px) {
-  .collapse {
-    display: none;
-  }
-}
-
-.custom-modal .modal-dialog {
+/* .custom-modal .modal-dialog {
   max-width: 100%;
   margin: 1rem;
 }
@@ -76,7 +109,7 @@
   width: 100%;
   max-height: 90vh;
   overflow-y: auto;
-}
+} */
 
 @media (min-width: 576px) {
   .custom-modal .modal-dialog {
@@ -85,9 +118,18 @@
   }
 }
 
+@media (max-width: 768px) {
+  .nav-item {
+    width: 300px;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
 @media (min-width: 768px) {
   .custom-modal .modal-dialog {
     max-width: 700px;
+    width: 60vw;
   }
 }
 

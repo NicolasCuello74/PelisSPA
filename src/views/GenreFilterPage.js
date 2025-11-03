@@ -3,7 +3,6 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Pagination from '../components/Pagination'
 import fetchGenres from '../utils/fetchGenres'
-import Genres from '../components/Genres'
 import CustomCard from '../components/CustomCard'
 import axios from 'axios'
 import Swal from 'sweetalert2'
@@ -18,23 +17,24 @@ const GenreFilterPage = ({ addOrRemoveFromFavs }) => {
   const { isAuthenticated } = useAuth0()
   const navigate = useNavigate()
 
-  const fetchMovies = async () => {
-    try {
-      const url = `${process.env.REACT_APP_URL}?api_key=${process.env.REACT_APP_KEY}&with_genres=${selectedGenre}&page=${currentPage}`
-
-      const response = await axios.get(url)
-      setGenreMovies(response.data.results)
-      setTotalPages(response.data.total_pages)
-    } catch (error) {
-      console.error('Error:', error)
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Hubo un error al cargar las películas. Por favor, inténtalo de nuevo más tarde.',
-      })
-    }
-  }
   useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const url = `${process.env.REACT_APP_URL}?api_key=${process.env.REACT_APP_KEY}&with_genres=${selectedGenre}&page=${currentPage}`
+
+        const response = await axios.get(url)
+        setGenreMovies(response.data.results)
+        setTotalPages(response.data.total_pages)
+      } catch (error) {
+        console.error('Error:', error)
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Hubo un error al cargar las películas. Por favor, inténtalo de nuevo más tarde.',
+        })
+      }
+    }
+
     if (selectedGenre) {
       fetchMovies()
     }
@@ -44,21 +44,20 @@ const GenreFilterPage = ({ addOrRemoveFromFavs }) => {
     fetchGenres(isAuthenticated, navigate, setGenres)
   }, [isAuthenticated, navigate])
 
-  const handleGenreClick = (genreId) => {
+  useEffect(() => {
     setSelectedGenre(genreId)
-    setCurrentPage(1)
-  }
+  }, [genreId])
+
   const handlePageChange = (page) => {
     setCurrentPage(page)
-    console.log(currentPage)
   }
+
   const handleClicks = (movie) => {
     addOrRemoveFromFavs(movie)
   }
 
   return (
-    <div>
-      <Genres genres={genres} onGenreClick={handleGenreClick} />
+    <div className="container pt-5">
       <div className="row">
         {genreMovies.map((oneMovie, idx) => (
           <div
@@ -85,11 +84,13 @@ const GenreFilterPage = ({ addOrRemoveFromFavs }) => {
             />
           </div>
         ))}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+        <div className="d-flex justify-content-center mt-3">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        </div>
       </div>
     </div>
   )
