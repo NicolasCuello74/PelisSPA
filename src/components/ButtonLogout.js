@@ -14,10 +14,7 @@ const LogoutButton = () => {
       onClick={() =>
         logout({
           logoutParams: {
-            returnTo: [
-              'http://localhost:3000/',
-              'https://alkemy-app.vercel.app/',
-            ],
+            returnTo: ['https://alkemy-app.vercel.app/'],
           },
         })
       }
