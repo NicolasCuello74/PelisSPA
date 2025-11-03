@@ -8,12 +8,11 @@ const LoginButton = () => {
   return (
     <Button
       variant="secondary"
-      size="sm"
-      style={{ marginRight: '10px' }}
+      size="lg"
       type="submit"
       onClick={() => loginWithRedirect()}
     >
-      Log In
+      Loguearse
     </Button>
   )
 }

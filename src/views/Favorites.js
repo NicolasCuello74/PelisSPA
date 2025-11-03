@@ -19,7 +19,7 @@ const Favorites = () => {
       setFavorites(favInLocal)
     }
     console.log(favorites)
-  }, [isAuthenticated, navigate])
+  }, [isAuthenticated, navigate, favorites])
 
   const handleClicks = (movie) => {
     console.log('se esta ejecutando el click')
@@ -29,35 +29,37 @@ const Favorites = () => {
   }
 
   return (
-    <div className="row">
+    <div className="CustomCard container">
       {favorites.length === 0 ? (
         <NoFavorites />
       ) : (
-        favorites.map((oneMovie, idx) => (
-          <div
-            className="col-12 col-sm-6 col-md-4 col-lg-3 p-3 h-auto mt-2 d-flex"
-            key={idx}
-          >
-            <CardFavorites
-              addOrRemoveFromFavs={handleClicks}
-              card={{
-                image: oneMovie.image
-                  ? `https://image.tmdb.org/t/p/original${oneMovie.image}`
-                  : 'https://res.cloudinary.com/decdqjawu/image/upload/t_Banner 16:9/v1714514493/Captura_de_pantalla_2024-04-30_184335_wxyiro.png',
-                title: oneMovie.title,
-                description: oneMovie.description ? (
-                  oneMovie.description.substring(0, 150)
-                ) : (
-                  <p>
-                    You can search for the description on the internet using the
-                    movie title.
-                  </p>
-                ),
-                id: oneMovie.id,
-              }}
-            />
-          </div>
-        ))
+        <div className="row">
+          {favorites.map((oneMovie, idx) => (
+            <div
+              className="col-12 col-sm-6 col-md-4 col-lg-3 p-3 h-auto mt-2 d-flex"
+              key={idx}
+            >
+              <CardFavorites
+                addOrRemoveFromFavs={handleClicks}
+                card={{
+                  image: oneMovie.image
+                    ? `https://image.tmdb.org/t/p/original${oneMovie.image}`
+                    : 'https://res.cloudinary.com/decdqjawu/image/upload/t_Banner 16:9/v1714514493/Captura_de_pantalla_2024-04-30_184335_wxyiro.png',
+                  title: oneMovie.title,
+                  description: oneMovie.description ? (
+                    oneMovie.description.substring(0, 150)
+                  ) : (
+                    <p>
+                      Puedes buscar la descripción en internet usando el título
+                      de la película.
+                    </p>
+                  ),
+                  id: oneMovie.id,
+                }}
+              />
+            </div>
+          ))}
+        </div>
       )}
     </div>
   )

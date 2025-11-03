@@ -10,11 +10,14 @@ const LogoutButton = () => {
       variant="secondary"
       size="sm"
       type="submit"
-      style={{ marginRight: '2em' }}
+      style={{ width: '100px' }}
       onClick={() =>
         logout({
           logoutParams: {
-            returnTo: 'https://alkemy-app.vercel.app/',
+            returnTo: [
+              'http://localhost:3000/',
+              'https://alkemy-app.vercel.app/',
+            ],
           },
         })
       }

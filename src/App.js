@@ -1,12 +1,10 @@
 import { Routes, Route } from 'react-router-dom'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
-import AboutMe from './views/AboutMe'
 import Landing from './views/Landing'
 import Favorites from './views/Favorites'
 import GenreFilterPage from './views/GenreFilterPage'
 import Buscador from './views/Buscador'
-import './css/bootstrap.min.css'
 import './css/App.css'
 import HomePage from './views/HomePage'
 import addOrRemoveFromFavs from './utils/addOrRemoveFromFavs'
@@ -14,9 +12,12 @@ import addOrRemoveFromFavs from './utils/addOrRemoveFromFavs'
 function App() {
   return (
     <>
-      <div className="container p-3 mb-2 text-info-emphasis">
+      <div
+        id="App"
+        className="d-flex flex-column justify-content-between min-vh-100 bg-dark text-light"
+      >
         <NavBar />
-        <Routes className="mb-3">
+        <Routes>
           <Route exact path="/" element={<Landing />} />
           <Route
             path="/home"
@@ -32,7 +33,6 @@ function App() {
             path="/Favoritos"
             element={<Favorites addOrRemoveFromFavs={addOrRemoveFromFavs} />}
           />
-          <Route path="/AboutMe" element={<AboutMe />} />
           <Route path="/Search" element={<Buscador />} />
         </Routes>
         <Footer />

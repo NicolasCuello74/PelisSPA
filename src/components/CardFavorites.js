@@ -43,8 +43,9 @@ const CustomCard = (props) => {
         }}
       >
         <Button
-          className="d-flex justify-content-center align-items-center position-absolute bg-light"
+          className="d-flex justify-content-center align-items-center position-absolute"
           style={{ width: '30px', height: '30px' }}
+          variant="outline-dark"
           onClick={handleClick}
           data-movie-id={props.card.id}
         >
@@ -61,30 +62,41 @@ const CustomCard = (props) => {
           >
             {props.card.description}
           </Card.Text>
-          <div className="d-flex flex-row justify-content-around border-0 m-0 p-2">
-            <Button variant="outline-dark" onClick={handleVideoOpen}>
+          <Card.Footer className="d-flex justify-content-center gap-1">
+            <Button
+              style={{ width: '90%' }}
+              variant="outline-dark"
+              onClick={handleVideoOpen}
+            >
               Trailer
             </Button>
-          </div>
+          </Card.Footer>
         </Card.Body>
       </Card>
       <Modal
         show={showModal}
         onHide={handleVideoClose}
-        className="d-flex justify-content-center align-content-center align-items-center"
+        size="lg"
         centered
         dialogClassName="custom-modal" // Cambiar aquí
       >
         <Modal.Header closeButton>
           <Modal.Title>Trailer</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          {videoKey ? (
-            <YoutubePlayer url={videoUrl} controls={true} width="100%" />
-          ) : (
+        {videoKey ? (
+          <Modal.Body style={{ height: '50vh' }}>
+            <YoutubePlayer
+              url={videoUrl}
+              controls={true}
+              width="100%"
+              height="100%"
+            />
+          </Modal.Body>
+        ) : (
+          <Modal.Body style={{ height: '30vh' }}>
             <p>No trailer available</p>
-          )}
-        </Modal.Body>
+          </Modal.Body>
+        )}
       </Modal>
     </>
   )
